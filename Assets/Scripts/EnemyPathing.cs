@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField] List<Transform> waypoints;
+    [SerializeField] List<Transform> waypoints = null;
     [SerializeField] float moveSpeed = 2f;
 
     int waypointIndex = 0;
