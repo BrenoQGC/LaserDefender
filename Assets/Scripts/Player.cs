@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
+
     // configuration parameters
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
-    [SerializeField] GameObject laserPrefab=null;
+    [SerializeField] int health = 200;
+
+    [Header("Projectile")]
+    [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
-
     Coroutine firingCoroutine;
-
     float xMin;
     float xMax;
     float yMin;
@@ -29,6 +32,22 @@ public class Player : MonoBehaviour
         Move();
         Fire();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Fire()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -42,18 +61,16 @@ public class Player : MonoBehaviour
     }
     IEnumerator FireContinuously()
     {
-            while (true)
-            {
-                GameObject laser = Instantiate(
-                          laserPrefab,
+        while (true)
+        {
+            GameObject laser = Instantiate(
+                    laserPrefab,
                     transform.position,
                     Quaternion.identity) as GameObject;
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
-
-
     private void Move()
     {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
