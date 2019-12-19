@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2915829353263292036}
   - component: {fileID: 2915829353263292035}
-  - component: {fileID: 1392922308}
+  - component: {fileID: 1047580811}
+  - component: {fileID: -4497331323794323650}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1392922308
+--- !u!114 &1047580811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,6 +94,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f131df41f1ab8c46833d0c5a1aa75b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: 88f499b81e9f77f47b53f8faf6bf2249, type: 2}
   waypoints: []
-  moveSpeed: 5
+--- !u!114 &-4497331323794323650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915829353263292034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b982235ef248945a6b38e624592e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
