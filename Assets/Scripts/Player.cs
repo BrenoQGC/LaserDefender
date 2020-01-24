@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] int health = 200;
 
     [Header("Projectile")]
-    [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject laserPrefab=null;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
     Coroutine firingCoroutine;
