@@ -114,7 +114,7 @@ MonoBehaviour:
   maxTimeBetweenShots: 3
   projectile: {fileID: 4629067242072528073, guid: d40e005db5692734da60e458dfd6d499,
     type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 5
 --- !u!58 &-8260066820689773250
 CircleCollider2D:
   m_ObjectHideFlags: 0
