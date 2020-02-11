@@ -18,8 +18,6 @@ public class GameSession : MonoBehaviour
         if (sessionNumber > 1)
         {
             Destroy(gameObject);
-            Debug.Log("Game Session Destruido");
-            Debug.Log(sessionNumber);
         }
         else
         {

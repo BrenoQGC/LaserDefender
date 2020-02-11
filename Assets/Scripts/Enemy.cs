@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] [Range (0,1)] float deathSoundVolume=0.75f;
     [SerializeField] AudioClip shootSound;
     [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.75f;
+    [SerializeField] int killScore=100;
 
     // Use this for initialization
     void Start () {
@@ -71,5 +72,6 @@ public class Enemy : MonoBehaviour {
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, 1f);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        FindObjectOfType<GameSession>().AddToScore(killScore);
     }
 }
