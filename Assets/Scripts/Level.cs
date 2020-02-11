@@ -19,4 +19,8 @@ public class Level : MonoBehaviour
     {
         Application.Quit();
     }
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
 }
