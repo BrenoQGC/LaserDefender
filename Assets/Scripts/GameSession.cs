@@ -1,37 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    int score=0;
+    public static GameSession Instance { get; private set; }
+
+    public int score = 0;
 
     private void Awake()
     {
-        SetupSingleton();
-    }
-
-    private void SetupSingleton()
-    {
-        int sessionNumber = FindObjectsOfType<GameSession>().Length;
-        if (sessionNumber > 1)
+     if (Instance == null)
         {
-            Destroy(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
-        } 
+            Destroy(gameObject);
+        }
     }
 
     public int GetScore()
     {
-        return score;
+        return GameSession.Instance.score;
     }
 
     public void AddToScore(int scoreValue)
     {
+        // GameSession.Instance.score += scoreValue;
         score += scoreValue;
     }
 
@@ -39,4 +37,8 @@ public class GameSession : MonoBehaviour
     {
         Destroy(gameObject);
     }
+   /* private void Update()
+    {
+        Debug.Log(gameObject.GetInstanceID());
+    }*/
 }
